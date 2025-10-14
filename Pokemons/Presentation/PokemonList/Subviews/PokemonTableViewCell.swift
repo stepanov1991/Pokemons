@@ -68,10 +68,11 @@ class PokemonTableViewCell: BaseTableViewCell {
     
     static let reuseID = "PokemonTableViewCell"
     
-    // MARK: - Actions
+    // MARK: - Pubpic properties
     var onFavouriteTapped: (() -> Void)?
     var onDeleteTapped: (() -> Void)?
     
+    // MARK: - State
     private var cancellable: AnyCancellable?
     
     // MARK: - Life-Cycle
@@ -84,6 +85,7 @@ class PokemonTableViewCell: BaseTableViewCell {
         imageLoaderIndicator.isHidden = false
     }
     
+    // MARK: - UI
     override func configureUI() {
         super.configureUI()
         setupConteinerView()
@@ -97,7 +99,7 @@ class PokemonTableViewCell: BaseTableViewCell {
     
     // MARK: - Public methods
     func setPokemon(_ pokemon: PokemonModel) {
-        pokemonNameLabel.text = pokemon.name.capitalized
+        pokemonNameLabel.text = pokemon.name
         idLabel.text = pokemon.id
         favouriteButton.setImage(UIImage(systemName: pokemon.isFavorite ? "heart.fill": "heart"), for: .normal)
         
@@ -113,7 +115,7 @@ class PokemonTableViewCell: BaseTableViewCell {
   
     }
     
-    // MARK: - Private methods
+    // MARK: - Actions
     @objc
     private func onFavourite() {
         onFavouriteTapped?()

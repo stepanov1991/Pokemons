@@ -5,11 +5,12 @@
 //  Created by Yevhenii Stepanov on 12.10.2025.
 //
 
+import Foundation
+
 struct PokemonModel {
     let id: String
     let name: String
-    let height: Int?
-    let weight: Int?
+    let physicalParameters: String
     let fronImageUrlString: String?
     var isFavorite: Bool = false
     
@@ -19,9 +20,12 @@ struct PokemonModel {
         } else  {
             self.id = "There is no id"
         }
-        self.name = remore?.name ?? "There is no name"
-        self.height = remore?.height
-        self.weight = remore?.weight
+        self.name = remore?.name?.capitalized ?? "There is no name"
+        if let height = remore?.height, let weight = remore?.weight {
+            physicalParameters = "Height: \(height), Weight: \(weight)"
+        } else {
+            physicalParameters = "There are no ifno about size"
+        }
         self.fronImageUrlString = remore?.sprites?.fronImageUrlString
     }
 }

@@ -74,6 +74,19 @@ class PokemonListViewModel {
         chageFavoriteCount()
     }
     
+    func navigateToDetails(index: Int) {
+        let vc = PokemonDetailsViewController()
+        let pokemon = pokemons[index]
+        
+        vc.setPokemon(pokemon)
+        
+        vc.onFavouriteTapped = { [weak self] in
+            self?.handleFavoriteTap(at: index)
+        }
+        
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
     // MARK: - Private methods
     private func chageFavoriteCount() {
     favouriteCount = pokemons.filter { $0.isFavorite == true }.count

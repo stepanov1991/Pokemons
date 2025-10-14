@@ -172,4 +172,8 @@ extension PokemonListViewController: UITableViewDataSource, UITableViewDelegate 
             viewModel.loadMorePokemons()
         }
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel.navigateToDetails(index: indexPath.row)
+    }
 }
