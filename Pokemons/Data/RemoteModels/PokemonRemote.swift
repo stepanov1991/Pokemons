@@ -10,5 +10,13 @@ struct PokemonRemote: Codable {
     let name: String?
     let height: Int?
     let weight: Int?
-    let imageURLString: String?
+    let sprites: Sprites?
+}
+
+struct Sprites: Codable {
+    let fronImageUrlString: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case fronImageUrlString = "front_default"
+    }
 }

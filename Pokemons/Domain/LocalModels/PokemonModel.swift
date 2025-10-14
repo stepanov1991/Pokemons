@@ -6,17 +6,22 @@
 //
 
 struct PokemonModel {
-    let id: Int?
-    let name: String?
+    let id: String
+    let name: String
     let height: Int?
     let weight: Int?
-    let imageURLString: String?
+    let fronImageUrlString: String?
+    var isFavorite: Bool = false
     
     init(from remore: PokemonRemote?) {
-        self.id = remore?.id
-        self.name = remore?.name
+        if let id = remore?.id {
+            self.id = "ID: " +  String(id)
+        } else  {
+            self.id = "There is no id"
+        }
+        self.name = remore?.name ?? "There is no name"
         self.height = remore?.height
         self.weight = remore?.weight
-        self.imageURLString = remore?.imageURLString
+        self.fronImageUrlString = remore?.sprites?.fronImageUrlString
     }
 }
