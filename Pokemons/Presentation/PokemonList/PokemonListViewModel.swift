@@ -23,8 +23,8 @@ class PokemonListViewModel {
     private var cancellables = Set<AnyCancellable>()
     private let pokemonUseCase: PokemonUseCaseProtocol
     
-    init() {
-        self.pokemonUseCase = PokemonUseCase()
+    init(pokemonUseCase: PokemonUseCaseProtocol = PokemonUseCase()) {
+        self.pokemonUseCase = pokemonUseCase
         loadPokemonList()
     }
     
